@@ -2,8 +2,15 @@
 
 import { Line, LineChart, CartesianGrid, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ChartTooltipContent } from '@/components/ui/chart';
+import { ChartTooltipContent, ChartContainer } from '@/components/ui/chart';
 import { onTimeDeliveriesData } from '@/lib/data';
+
+const chartConfig = {
+  onTime: {
+    label: 'On-Time',
+    color: 'hsl(var(--primary))',
+  },
+};
 
 export function OnTimeDeliveriesChart() {
   return (
@@ -13,8 +20,8 @@ export function OnTimeDeliveriesChart() {
         <CardDescription>Performance over the last 6 months.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="h-[300px]">
-          <ResponsiveContainer width="100%" height="100%">
+        <ChartContainer config={chartConfig}>
+          <ResponsiveContainer width="100%" height={300}>
             <LineChart
               data={onTimeDeliveriesData}
               margin={{
@@ -47,7 +54,7 @@ export function OnTimeDeliveriesChart() {
               />
             </LineChart>
           </ResponsiveContainer>
-        </div>
+        </ChartContainer>
       </CardContent>
     </Card>
   );

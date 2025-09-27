@@ -2,8 +2,15 @@
 
 import { Bar, BarChart, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { ChartTooltipContent } from '@/components/ui/chart';
+import { ChartTooltipContent, ChartContainer } from '@/components/ui/chart';
 import { dispatchesData } from '@/lib/data';
+
+const chartConfig = {
+  dispatches: {
+    label: 'Dispatches',
+    color: 'hsl(var(--primary))',
+  },
+};
 
 export function DispatchesChart() {
   return (
@@ -13,9 +20,9 @@ export function DispatchesChart() {
         <CardDescription>Top 5 employees by dispatches this week.</CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="h-[300px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={dispatchesData}>
+        <ChartContainer config={chartConfig}>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={dispatchesData} margin={{ top: 20 }}>
               <XAxis
                 dataKey="name"
                 stroke="hsl(var(--muted-foreground))"
@@ -37,7 +44,7 @@ export function DispatchesChart() {
               <Bar dataKey="dispatches" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
-        </div>
+        </ChartContainer>
       </CardContent>
     </Card>
   );
