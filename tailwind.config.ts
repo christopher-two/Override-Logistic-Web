@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        body: ['"IBM Plex Mono"', 'monospace'],
+        headline: ['"IBM Plex Mono"', 'monospace'],
         code: ['monospace'],
       },
       colors: {
