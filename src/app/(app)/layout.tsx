@@ -13,7 +13,7 @@ export default function AppLayout({
       <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
         <Header />
         <SidebarInset>
-            <main className="flex-1 p-4 sm:px-6 sm:py-0 pt-14 sm:pt-0">{children}</main>
+            <main className="flex-1 p-4 sm:px-6 sm:py-0 pt-20 sm:pt-6">{children}</main>
         </SidebarInset>
       </div>
     </div>
