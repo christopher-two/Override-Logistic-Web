@@ -21,12 +21,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-  DropdownMenuSub,
-  DropdownMenuSubTrigger,
-  DropdownMenuSubContent,
-  DropdownMenuPortal
 } from '@/components/ui/dropdown-menu';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 
 export default function AppLayout({
   children,
@@ -63,7 +59,7 @@ export default function AppLayout({
             className="flex items-center gap-2 text-lg font-semibold md:text-base"
           >
             <Truck className="h-6 w-6" />
-            <span className="sr-only">Override</span>
+            <span className="">Override</span>
           </Link>
           {navLinks.map(({ href, label }) => (
             <Link
@@ -103,13 +99,16 @@ export default function AppLayout({
             </Button>
           </SheetTrigger>
           <SheetContent side="left">
+            <SheetHeader>
+               <SheetTitle className='sr-only'>Mobile Navigation Menu</SheetTitle>
+            </SheetHeader>
             <nav className="grid gap-6 text-lg font-medium">
               <Link
                 href="#"
                 className="flex items-center gap-2 text-lg font-semibold"
               >
                 <Truck className="h-6 w-6" />
-                <span className="sr-only">Override</span>
+                <span className="">Override</span>
               </Link>
               {navLinks.map(({ href, label }) => (
                 <Link key={href} href={href} className="text-muted-foreground hover:text-foreground">
@@ -118,11 +117,13 @@ export default function AppLayout({
               ))}
               <div className='pt-2'>
                 <p className='text-sm font-semibold text-muted-foreground px-1 pb-2'>AI Tools</p>
+                <div className='grid gap-4'>
                 {aiToolsLinks.map(({ href, label }) => (
-                    <Link key={href} href={href} className="flex items-center py-2 text-muted-foreground hover:text-foreground">
+                    <Link key={href} href={href} className="text-muted-foreground hover:text-foreground">
                       {label}
                     </Link>
                 ))}
+                </div>
               </div>
             </nav>
           </SheetContent>
